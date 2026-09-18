@@ -1,0 +1,257 @@
+/* ---------- GLOBAL RESET & BASE STYLES ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* makes width/height include padding+border, easier to reason about */
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f4f4;
+  color: #222;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   1. NAVIGATION BAR
+   ============================================================ */
+.navbar {
+  display: flex;                  /* lay logo + links out in a row */
+  justify-content: flex-end; /* logo on left, links on right */
+  align-items: center;
+ 
+  background-color: #552d5a;
+  padding: 30px 40px;
+  position: sticky;
+  top:0;
+  z-index: 100; /* navbar sticks to top of viewport when scrolling */
+}
+
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: bold;
+  position: absolute; /* position logo on the left */
+  left: 50%;
+  transform:translateX(-50%);
+}
+.navbar .logo img {
+    width: 50px;
+    height: 30px;
+    object-fit: fill;
+    
+}
+
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px; /* spacing between nav items */
+}
+
+.nav-links a {
+  color: #f4f4f4;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  color: #ff6b6b;
+}
+
+/* ============================================================
+   2. PRODUCT CARD — demonstrates the CSS BOX MODEL
+   Every box has, from inside out: content -> padding -> border -> margin
+   ============================================================ */
+.product-section {
+  display: flex;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+.product-card {
+  background-color: #ffffff;
+
+  /* CONTENT area is controlled by width */
+  width: 400px;
+
+  /* PADDING: space between content and border (inside the box) */
+  padding: 20px;
+
+  /* BORDER: the visible edge of the box */
+  border: 2px solid #ddd;
+  border-radius: 8px;
+
+  /* MARGIN: space between this box and everything outside it */
+  margin: 10px;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 15px; /* margin pushes the next element away */
+}
+
+.product-card h3 {
+  margin-bottom: 8px;
+}
+
+.product-card p {
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.product-card .price {
+  font-weight: bold;
+  color: #1a1a2e;
+  margin-bottom: 15px;
+}
+
+.product-card button {
+  width: 100%;
+  padding: 10px;           /* padding inside the button box */
+  border: none;
+  border-radius: 5px;
+  background-color: #ff6b6b;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.product-card button:hover {
+  background-color: #e85555;
+}
+
+/* ============================================================
+   3. THREE-COLUMN BLOG LAYOUT — built with FLEXBOX
+   ============================================================ */
+.blog-section {
+  padding: 20px 30px 50px;
+}
+
+.blog-section h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.blog-container {
+  display: flex;    /* the flex container */
+  flex-wrap: wrap;   /* allow columns to drop to new rows if needed */
+  gap: 20px;          /* spacing between columns, no manual margins needed */
+}
+
+.blog-post {
+  flex: 1 1 30%;   /* grow | shrink | basis(~30% width = 3 columns) */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  min-width: 250px; /* stops columns from getting too squeezed before wrapping */
+}
+
+.blog-post img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.blog-post h3 {
+  margin-bottom: 8px;
+}
+
+.blog-post p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   4. CONTACT BOX — sits at the bottom of the page
+   ============================================================ */
+.contact-box {
+  background-color:  #552d5a;
+  color: #f4f4f4;
+
+  /* PADDING: inner space around the content */
+  padding: 30px 20px;
+
+  /* MARGIN: space above, separating it from the blog section */
+  margin-top: 20px;
+
+  text-align: center;
+}
+
+.contact-box h2 {
+  margin-bottom: 10px;
+}
+
+.contact-box p {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.contact-details {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.contact-details li {
+  background-color:  #97649e;
+  padding: 10px 16px;     /* padding inside each detail pill */
+  border: 1px solid #97649e;
+  border-radius: 6px;
+}
+
+/* ============================================================
+   5. MEDIA QUERIES — responsiveness for mobile devices
+   ============================================================ */
+
+/* Tablets and below (<=768px): navbar links stack under the logo */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  /* blog posts become 2 per row instead of 3 */
+  .blog-post {
+    flex: 1 1 45%;
+  }
+}
+
+/* Mobile phones (<=480px): everything becomes single column */
+@media (max-width: 480px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .product-card {
+    width: 100%;
+  }
+
+  /* blog posts stack fully — 1 per row */
+  .blog-post {
+    flex: 1 1 100%;
+  }
+
+  /* contact details stack in one column */
+  .contact-details {
+    flex-direction: column;
+    align-items: center;
+  }
+}
