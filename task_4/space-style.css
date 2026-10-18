@@ -1,0 +1,238 @@
+/* =========================================
+   COLOUR THEME (black space + rust orange)
+   Black : #000000
+   Rust  : #c8552b
+   Teal  : #2ec4b6
+   Cream : #f5efe6
+   ========================================= */
+
+/* ---------- Basic page styles ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000000;
+  color: #f5efe6;
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+/* Swashy vintage look for the whole website */
+h1, h2, h3, h4, h5, h6,
+.navbar-brand,
+.nav-link,
+.btn,
+.more-link {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+}
+
+h1, h2, h3 {
+  color: #f5efe6;
+}
+
+.small-title {
+  color: #c8552b;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background-color: #000000;
+  border-bottom: 1px solid #c8552b;
+}
+
+.navbar-brand {
+  color: #f5efe6;
+  font-size: 22px;
+}
+
+/* Navigation hover transition */
+.nav-link {
+  color: #f5efe6;
+  border-bottom: 3px solid transparent;
+  transition: color 0.3s, border-bottom-color 0.3s, background-color 0.3s;
+}
+
+.nav-link:hover {
+  color: #c8552b;
+  border-bottom-color: #c8552b;
+  background-color: #1a1a1a;
+}
+
+/* ---------- Full screen sections with background images ---------- */
+.full-section {
+  min-height: 100vh;
+  background-color: #000000;
+  background-size: cover;
+  background-position: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* 1. Home - nebula image, dark on the left so text is easy to read */
+.hero {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.2)), url("images/north-america-nebula.jpg");
+}
+
+/* 2. Missions - Orion nebula image */
+.missions-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url("images/orion-nebula.jpg");
+}
+
+/* 3. About - Carina nebula image */
+.about-bg {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)), url("images/carina-nebula.jpg");
+}
+
+/* 4. Contact - Milky Way image */
+.contact-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/milky-way.jpg");
+}
+
+/* ---------- Big titles ---------- */
+.big-title {
+  font-size: 90px;
+  line-height: 1;
+  text-shadow: 2px 2px 10px #000000;
+}
+
+.section-title {
+  font-size: 60px;
+  text-shadow: 2px 2px 10px #000000;
+}
+
+.hero-text,
+.about-text {
+  font-size: 22px;
+  text-shadow: 1px 1px 8px #000000;
+}
+
+/* ---------- Mission items (no cards, text sits on the image) ---------- */
+.icon {
+  font-size: 50px;
+}
+
+.mission-item {
+  border-left: 3px solid #c8552b;
+  padding-left: 20px;
+  transition: border-left-color 0.3s, transform 0.3s;
+}
+
+.mission-item:hover {
+  border-left-color: #2ec4b6;
+  transform: translateX(10px);
+}
+
+.mission-item p {
+  text-shadow: 1px 1px 8px #000000;
+}
+
+/* ---------- Buttons and links ---------- */
+.btn-rust {
+  background-color: #c8552b;
+  color: #f5efe6;
+  border: none;
+  border-radius: 30px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-rust:hover {
+  background-color: #f5efe6;
+  color: #000000;
+}
+
+.more-link {
+  color: #f5efe6;
+  text-decoration: none;
+  border-bottom: 2px solid #c8552b;
+  transition: color 0.3s;
+}
+
+.more-link:hover {
+  color: #c8552b;
+}
+
+/* ---------- Contact form ---------- */
+.form-box {
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 1px solid #c8552b;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.form-control {
+  background-color: #f5efe6;
+  font-family: 'Fraunces', serif;
+}
+
+/* ---------- Keyframe animations ---------- */
+
+/* 1. Rocket floats up and down */
+@keyframes fly {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-30px); }
+  100% { transform: translateY(0); }
+}
+
+.rocket {
+  font-size: 100px;
+  animation: fly 3s ease-in-out infinite;
+}
+
+/* 2. Astronaut floats and tilts slowly */
+@keyframes float {
+  0%   { transform: translateY(0) rotate(-10deg); }
+  50%  { transform: translateY(-20px) rotate(10deg); }
+  100% { transform: translateY(0) rotate(-10deg); }
+}
+
+.astronaut {
+  font-size: 80px;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* 3. Stars twinkle */
+@keyframes twinkle {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+.stars {
+  font-size: 30px;
+  animation: twinkle 2s linear infinite;
+}
+
+/* 4. Button pulse */
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.pulse-btn {
+  animation: pulse 2s infinite;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background-color: #000000;
+  color: #f5efe6;
+  border-top: 1px solid #c8552b;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 767px) {
+  .big-title {
+    font-size: 56px;
+  }
+
+  .section-title {
+    font-size: 40px;
+  }
+}
