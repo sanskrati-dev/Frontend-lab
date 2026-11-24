@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced To-Do List</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightgray;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            width: 450px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+        }
+
+        button {
+            padding: 8px;
+            margin: 3px;
+            cursor: pointer;
+        }
+
+        li {
+            background-color: lightgray;
+            margin: 10px;
+            padding: 10px;
+            list-style: none;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Advanced To-Do List</h2>
+
+        <input type="text" id="taskInput"
+               placeholder="Enter your task">
+
+        <button id="addBtn">Add Task</button>
+
+        <ul id="taskList"></ul>
+
+    </div>
+
+    <script>
+
+        let input = document.getElementById("taskInput");
+        let addBtn = document.getElementById("addBtn");
+        let taskList = document.getElementById("taskList");
+
+        // ADD TASK
+
+        addBtn.addEventListener("click", function() {
+
+            let task = input.value.trim();
+
+            if(task === "") {
+                alert("Please enter a task");
+                return;
+            }
+
+            let li = document.createElement("li");
+
+            // CHECKBOX
+
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+
+            // TASK TEXT
+
+            let span = document.createElement("span");
+            span.innerText = task;
+
+            checkbox.addEventListener("change", function() {
+
+                if(checkbox.checked) {
+                    span.classList.add("completed");
+                }
+                else {
+                    span.classList.remove("completed");
+                }
+
+            });
+
+            // MOVE UP BUTTON
+
+            let upBtn = document.createElement("button");
+            upBtn.innerText = "↑";
+
+            upBtn.addEventListener("click", function() {
+
+                let previous = li.previousElementSibling;
+
+                if(previous) {
+                    taskList.insertBefore(li, previous);
+                }
+
+            });
+
+            // MOVE DOWN BUTTON
+
+            let downBtn = document.createElement("button");
+            downBtn.innerText = "↓";
+
+            downBtn.addEventListener("click", function() {
+
+                let next = li.nextElementSibling;
+
+                if(next) {
+                    taskList.insertBefore(next, li);
+                }
+
+            });
+
+            // DELETE BUTTON
+
+            let deleteBtn = document.createElement("button");
+            deleteBtn.innerText = "Delete";
+
+            deleteBtn.addEventListener("click", function() {
+                li.remove();
+            });
+
+            // ADD ALL ELEMENTS
+
+            li.appendChild(checkbox);
+            li.appendChild(span);
+            li.appendChild(upBtn);
+            li.appendChild(downBtn);
+            li.appendChild(deleteBtn);
+
+            taskList.appendChild(li);
+
+            input.value = "";
+
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Server Data Fetching</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: lightgray;
+        }
+
+        .container {
+            background-color: white;
+            width: 400px;
+            margin: 50px auto;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Server Data Fetching</h2>
+
+        <button id="fetchBtn">Fetch Data</button>
+
+        <div id="result">
+            Click the button to fetch data.
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let btn = document.getElementById("fetchBtn");
+        let result = document.getElementById("result");
+
+        btn.addEventListener("click", function() {
+
+            result.innerHTML = "Loading data...";
+
+            // Create Promise
+
+            let promise = new Promise(function(resolve, reject) {
+
+                setTimeout(function() {
+
+                    let data = {
+                        name: "Pari",
+                        course: "B.Tech CSE",
+                        college: "GLA University"
+                    };
+
+                    resolve(data);
+
+                }, 2000);
+
+            });
+
+
+            // Get server data
+
+            promise.then(function(data) {
+
+                result.innerHTML = `
+                    <h3>Data Received Successfully!</h3>
+                    <p>Name: ${data.name}</p>
+                    <p>Course: ${data.course}</p>
+                    <p>College: ${data.college}</p>
+                `;
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
