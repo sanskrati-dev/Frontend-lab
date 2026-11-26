@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.products {
+  display: flex;          /* cards in a row */
+  justify-content: center; /* center the row */
+  flex-wrap: wrap;        /* move down if no space */
+  gap: 25px;              /* space between cards */
+}
+
+.card {
+  width: 260px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;         /* fit the card's width */
+  height: 220px;       /* same height for all */
+  object-fit: cover;   /* crop without stretching */
+  border-radius: 8px;
+}
